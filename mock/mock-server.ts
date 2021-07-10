@@ -7,6 +7,7 @@ import path from 'path'
 import yaml from 'yamljs'
 import * as api from './api'
 import { accessTokenAuth } from './security'
+// 根据swagger api 定义文件中的信息，动态生产
 import { connector, summarise } from 'swagger-routes-express'
 
 const app = express()
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 })
 
 // Read and swagger config file
+// 读取接口文件yml
 const apiDefinition = yaml.load(path.resolve(__dirname, 'swagger.yml'))
 // Create mock functions based on swaggerConfig
 const options = {
